@@ -30,7 +30,7 @@ console.log(KareninAlani(10))
 		*/
 
 function CemberinCevresi(cemberR){
-	var pi = 3.14159;
+	
 	let cemberCevre = 2 * pi * cemberR;
 	return cemberCevre;
 }
@@ -50,7 +50,6 @@ console.log(CemberinCevresi(5))
 		*/
 		
 function CemberinAlani(cemberR,pi){
-	var pi = 3.14159;
 	let cemberAlan = pi * Math.pow(cemberR,2);
 	return cemberAlan;
 }
@@ -100,21 +99,28 @@ console.log(CemberinAlani(15,pi))
 	// 3b çözümü:
 
 	var ucetambolunenler=[];
-	sayilar.forEach(function(sayi){
-		if (sayi % 3 ===0){
-			ucetambolunenler.push(sayi);
-		}
-	})
+		sayilar.forEach((sayi)=>{
+			if (sayi % 3 === 0){
+				ucetambolunenler.push(sayi);
+			}
+		})
 		console.log(ucetambolunenler);
+	
+		//3c çözümü:
 		
-		
-	//3c çözümü:
-	
-	var ucebolunenlerintoplami=ucetambolunenler.reduce((x,y) => x + y ,0)
-	
-	console.log(ucebolunenlerintoplami)
-	
-	
+		var ucebolunenlerintoplami=sayilar.reduce((total,item)=> {
+			
+		// 	if(item % 3===0){
+		// 		return total + item
+				
+		// 	} else {
+		// 		return total
+		// 	}
+		let deger = (item %  3 === 0) ? item : 0;
+		return total + deger
+	})
+		 
+		console.log(ucebolunenlerintoplami)
 	//3d çözümü
 	
 	var besyuzdenkucuksayilar=[];
@@ -128,16 +134,18 @@ console.log(CemberinAlani(15,pi))
 
 	//3e çözümü
 
-	var siralisayilar= besyuzdenkucuksayilar.sort((a,b) => a - b);
-	console.log(siralisayilar);
-	
+	siralisayilar=[];
+	siralisayilar= besyuzdenkucuksayilar.sort(function(a,b){
+		return a - b
+	})
+	console.log(siralisayilar)
 	
 	//3f çözümü
 	var tekraredensayilar=[];
 	var tekraredensayilarObj={};
 
 	for (let i = 0 ; i < sayilar.length; i++){
-		var sayi=sayilar[i];
+		let sayi=sayilar[i];
 		if(tekraredensayilarObj[sayi]){
 			tekraredensayilarObj[sayi]++;
 		} else {
